@@ -1,0 +1,42 @@
+@mixin clearfix() {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin font($size: 14px, $line: 24px) {
+  font-size: $size;
+  line-height: $line;
+}
+
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@function px2rem($value) {
+  @return ($value / $base-font-size) * 1rem;
+}
+
+@mixin toggle($id) {
+  ##{$id}:checked ~ .slider__toggles .slider__toggle[for='#{$id}'] {
+    background-color: $c-w;
+    border: 3px solid $c-bg;
+    @include size(6px, 6px);
+    border-radius: 50%;
+    position:relative;
+    top: -3px;
+  }
+}
+
+@mixin container() {
+  margin: 0 auto;
+  @media ($tablet-widths) {
+      width: 620px;
+  }
+  @media ($desktop-widths) {
+      width: 940px;
+  }
+}
